@@ -1,14 +1,12 @@
 "use strict";
 
-    let arrayNotes = [];
-    arrayNotes = JSON.parse(localStorage.getItem('localStorageNotes'));
-    if (arrayNotes == null) {
-        arrayNotes = [];
-    } else {
-        addNote();
-    }
-
-    console.log(arrayNotes);
+let arrayNotes = [];
+arrayNotes = JSON.parse(localStorage.getItem('localStorageNotes'));
+if (arrayNotes == null) {
+    arrayNotes = [];
+} else {
+    addNote();
+}
 
 // Добавляем объекты(заметки) после выключения браузера. Из LocalStorage в html
 function addNote(arrayNotes) {
@@ -35,10 +33,12 @@ function addNote(arrayNotes) {
         if(arrayNotes[index].isDone === true) {
             const p = li.querySelector('p');
             p.classList.toggle('line-through');
+            buttonImportant.classList.toggle('display-none');
         }
         if(arrayNotes[index].isImportant === true) {
             p = li.querySelector('p');
             p.classList.toggle('important');
+            buttonImportant.style = "background-color: #C2C2C2";
         }
 
         document.getElementById('myUl').appendChild(li);
@@ -122,19 +122,18 @@ function addLineThroughNode(event) {
     let p ;
    
     const index = [...ul.children].indexOf(li);
-    console.log(buttonImportant);
+
     if(li !== null && isButtonImportant === null) {
         p = li.querySelector('p');
         p.classList.toggle('line-through');
+        buttonImportant.classList.toggle('display-none');
+
         if( arrayNotes[index].isDone == false) {
             arrayNotes[index].isDone = true;
-         //   buttonImportant.style.display = "none";
         } else {
             arrayNotes[index].isDone = false;
-          //  buttonImportant.style.display = "block";
         }
     }
-    
     SaveInLocalStorage();
 }
 
@@ -153,8 +152,10 @@ function addImportantNode(event) {
         p.classList.toggle('important');
         if( arrayNotes[index].isImportant == false) {
             arrayNotes[index].isImportant = true;
+            buttonImportant.style = "background-color: #C2C2C2";
         } else {
             arrayNotes[index].isImportant = false;
+            buttonImportant.style = "background-color: #38B46C";
         }
     }
     SaveInLocalStorage();
@@ -277,8 +278,6 @@ inputSearch.addEventListener('keyup', searchNodes, false)
 
 // Поиск заметок
 function searchNodes(event) {
-    console.log(inputSearch.value);
-    console.log(inputSearch.value.length)
 
     for (let index = 0; index < arrayNotes.length; index++) {
         listUl.children[index].style.display = "flex";
