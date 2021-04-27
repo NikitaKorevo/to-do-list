@@ -42,8 +42,6 @@ function addNote(arrayNotes) {
         }
 
         document.getElementById('myUl').appendChild(li);
-        
-    
     }
 }
 
@@ -65,7 +63,6 @@ function createObjNode() {
     } else {
         alert('You must write something!');
     }
-    
 }
 
 // Заполняем массив объектом
@@ -208,7 +205,6 @@ function showAllNotes() {
                 listUl.children[index].style.display = "flex";
         }
     }
-    
 }
 
 buttonActive.addEventListener('click', showActiveNotes ,false);
