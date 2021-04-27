@@ -4,6 +4,13 @@ body {
   font-family: 'Roboto', arial, serif;
   font-size: 16px;
   background: url(../images/design/taking_notes.png) no-repeat right 218px;
+  @media  screen and (max-width: 950px) {
+    background-position: center 218px;
+    background-size: 100% auto;
+  }
+  @media screen and (max-width: 540px) {
+    background-position: center 318px;
+  }
 }
 
 .wrapper {
@@ -87,15 +94,11 @@ body {
     padding-bottom: 5px;
     z-index: 1;
     }
-
     &:focus {
-      outline: none;
-      //outline: 1px solid orange;
       color: $foreground-color;
     }
     &:active {
-      //outline: 1px solid orange;
-      color: rgba($foreground-color, 0.5);
+      outline: none;
     }
   }
 }
@@ -145,6 +148,7 @@ body {
   ul {
     li {
       display: flex;
+      white-space: pre-wrap;
       @media screen and (max-width: 1000px) {
         flex-wrap: wrap;
         justify-content: flex-end;
