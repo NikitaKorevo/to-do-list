@@ -270,7 +270,8 @@ function showDoneNotes() {
 }
 
 const inputSearch = document.getElementById('myInputSearch');
-inputSearch.addEventListener('keyup', searchNodes, false)
+inputSearch.addEventListener('click', showAllNotes, false);
+inputSearch.addEventListener('keyup', searchNodes, false);
 
 // Поиск заметок
 function searchNodes(event) {
